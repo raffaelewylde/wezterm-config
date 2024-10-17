@@ -11,7 +11,6 @@ if platform.is_win then
       { label = 'PowerShell Core', args = { 'pwsh' } },
       { label = 'PowerShell Desktop', args = { 'powershell' } },
       { label = 'Command Prompt', args = { 'cmd' } },
-      { label = 'Windows Subsystem for Linux', args = { 'wsl' } },
       { label = 'Nushell', args = { 'nu' } },
       {
          label = 'Git Bash',
@@ -36,7 +35,7 @@ elseif platform.is_linux then
    options.default_prog = { 'zsh', '-l' }
    options.launch_menu = {
       { label = 'Bash', args = { 'bash', '-l' } },
-      { label = 'Fish', args = { 'fish', '-l' } },
+      { label = 'Fish', args = { '/home/linuxbrew/.linuxbrew/bin/fish', '-l' } },
       { label = 'Zsh', args = { 'zsh', '-l' } },
       { label = 'NuShell', args = { '/home/linuxbrew/.linuxbrew/bin/nu', '-l' } },
       { label = 'Murex', args = { '/home/linuxbrew/.linuxbrew/bin/murex' } },
