@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 local platform = require('utils.platform')()
 
 local options = {
