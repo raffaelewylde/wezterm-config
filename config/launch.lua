@@ -12,6 +12,8 @@ if platform.is_win then
       { label = 'PowerShell Desktop', args = { 'powershell' } },
       { label = 'Command Prompt', args = { 'cmd' } },
       { label = 'Nushell', args = { 'nu' } },
+	  { label = 'Wsl Ubuntu', args = { 'wsl' } },
+	  { label = 'Wsl Parrot', args = { 'wsl', '-d', 'Parrot' } },
       {
          label = 'Git Bash',
          args = { 'C:\\Users\\Shadow\\scoop\\apps\\git\\current\\bin\\bash.exe' },
