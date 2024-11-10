@@ -42,7 +42,10 @@ elseif platform.is_linux then
       { label = 'Ysh', args = { '/home/linuxbrew/.linuxbrew/bin/ysh', '-l' } },
       { label = 'Osh', args = { '/home/linuxbrew/.linuxbrew/bin/osh', '-l' } },
       { label = 'Elvish', args = { 'elvish' } },
-      { label = 'Xonsh', args = { 'xonsh', '-l' } },
+      {
+         label = 'Xonsh',
+         args = { '/home/wylde/.local/share/mise/installs/pipx-xonsh/latest/bin/xonsh', '-l' },
+      },
    }
 end
 
