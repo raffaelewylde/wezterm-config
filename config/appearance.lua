@@ -1,30 +1,26 @@
-local wezterm = require('wezterm')
 local gpu_adapters = require('utils.gpu_adapter')
+local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
 
 return {
-   animation_fps = 60,
-   max_fps = 60,
+   max_fps = 120,
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
    webgpu_preferred_adapter = gpu_adapters:pick_best(),
+   -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu'),
+
+   -- cursor
+   animation_fps = 120,
+   cursor_blink_ease_in = 'EaseOut',
+   cursor_blink_ease_out = 'EaseOut',
+   default_cursor_style = 'BlinkingBlock',
+   cursor_blink_rate = 650,
 
    -- color scheme
    colors = colors,
 
    -- background
-   background = {
-      {
-         source = { File = wezterm.GLOBAL.background },
-         horizontal_align = 'Center',
-      },
-      {
-         source = { Color = colors.background },
-         height = '100%',
-         width = '100%',
-         opacity = 0.96,
-      },
-   },
+   background = backdrops:create_opts(),
 
    -- scrollbar
    enable_scroll_bar = true,
@@ -39,19 +35,24 @@ return {
 
    -- window
    window_padding = {
-      left = 5,
-      right = 10,
-      top = 12,
-      bottom = 7,
+      left = 0,
+      right = 0,
+      top = 10,
+      bottom = 7.5,
    },
+   adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
       active_titlebar_bg = '#090909',
       -- font = fonts.font,
       -- font_size = fonts.font_size,
    },
+   -- inactive_pane_hsb = {
+   --    saturation = 0.9,
+   --    brightness = 0.65,
+   -- },
    inactive_pane_hsb = {
-      saturation = 0.9,
-      brightness = 0.65,
+      saturation = 1,
+      brightness = 1,
    },
 }
