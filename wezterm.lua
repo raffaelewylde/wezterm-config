@@ -8,7 +8,7 @@ require('utils.backdrops')
 require('events.right-status').setup()
 require('events.left-status').setup()
 require('events.tab-title').setup()
-require('events.new-tab-button').setup()
+-- require('events.new-tab-button').setup()
 
 return Config
    :init()
@@ -17,5 +17,5 @@ return Config
    :append(require('config.fonts'))
    :append(require('config.general'))
    :append(require('config.launch'))
-   --   :append(require('config.domains'))
+   :append(require('config.domains'))
    .options
