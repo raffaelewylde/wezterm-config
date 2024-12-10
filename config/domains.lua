@@ -1,6 +1,9 @@
+local wezterm = require('wezterm')
+local hostname = wezterm.hostname()
 local platform = require('utils.platform')
+
 if platform.is_linux then
-   return {
+   local config = {
       -- ref: https://wezfurlong.org/wezterm/config/lua/SshDomain.html
       ssh_domains = {
          {
@@ -15,21 +18,21 @@ if platform.is_linux then
       unix_domains = {
          {
             name = 'unix',
-            no_serve_automatically = true,
+            socket_path = '/home/wylde/.local/share/wezterm/sock',
          },
       },
-
-      -- ref: https://wezfurlong.org/wezterm/config/lua/WslDomain.html
-      ---   wsl_domains = {
-      --      {
-      --         name = 'WSL:Ubuntu',
-      --         distribution = 'Ubuntu',
-      --         username = 'wylde',
-      --         default_cwd = '/home/wylde',
-      --         default_prog = { 'fish', '-l' },
-      --      },
-      --   },
    }
+
+   -- Add `unix_domains` conditionally for WSL-related hostnames
+   if hostname == 'ubuntu-wsl' or hostname == 'parrot-wsl' then
+      table.insert(config.unix_domains, {
+         name = 'wsl',
+         socket_path = '/mnt/c/Users/Shadow/.local/share/wezterm/sock',
+         skip_permissions_check = true,
+      })
+   end
+
+   return config
 elseif platform.is_mac then
    return {
       -- ref: https://wezfurlong.org/wezterm/config/lua/SshDomain.html
@@ -42,24 +45,6 @@ elseif platform.is_mac then
             multiplexing = 'WezTerm',
          },
       },
-      -- ref: https://wezfurlong.org/wezterm/multiplexing.html#unix-domains
-      unix_domains = {
-         {
-            name = 'unix',
-            no_serve_automatically = true,
-         },
-      },
-
-      -- ref: https://wezfurlong.org/wezterm/config/lua/WslDomain.html
-      ---   wsl_domains = {
-      --      {
-      --         name = 'WSL:Ubuntu',
-      --         distribution = 'Ubuntu',
-      --         username = 'wylde',
-      --         default_cwd = '/home/wylde',
-      --         default_prog = { 'fish', '-l' },
-      --      },
-      --   },
    }
 elseif platform.is_win then
    return {
@@ -69,11 +54,6 @@ elseif platform.is_win then
       unix_domains = {
          {
             name = 'unix',
-         },
-         {
-            name = 'wsl',
-            socket_path = '/mnt/c/Users/Shadow/.local/share/wezterm/sock',
-            skip_permissions_check = true,
          },
       },
       -- ref: https://wezfurlong.org/wezterm/config/lua/WslDomain.html
