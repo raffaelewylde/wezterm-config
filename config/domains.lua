@@ -11,7 +11,6 @@ if platform.is_linux then
             multiplexing = 'WezTerm',
          },
       },
-
       -- ref: https://wezfurlong.org/wezterm/multiplexing.html#unix-domains
       unix_domains = {
          {
@@ -43,7 +42,6 @@ elseif platform.is_mac then
             multiplexing = 'WezTerm',
          },
       },
-
       -- ref: https://wezfurlong.org/wezterm/multiplexing.html#unix-domains
       unix_domains = {
          {
@@ -67,7 +65,6 @@ elseif platform.is_win then
    return {
       -- ref: https://wezfurlong.org/wezterm/config/lua/SshDomain.html
       ssh_domains = {},
-
       -- ref: https://wezfurlong.org/wezterm/multiplexing.html#unix-domains
       unix_domains = {
          {
@@ -79,7 +76,6 @@ elseif platform.is_win then
             skip_permissions_check = true,
          },
       },
-
       -- ref: https://wezfurlong.org/wezterm/config/lua/WslDomain.html
       wsl_domains = {
          {
