@@ -6,12 +6,11 @@ local options = {
 }
 
 if platform.is_win then
-   options.default_prog = { 'pwsh', '-NoLogo' }
+   options.default_prog = { 'nu', '-l' }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },
-      { label = 'PowerShell Desktop', args = { 'powershell' } },
       { label = 'Command Prompt', args = { 'cmd' } },
-      { label = 'Nushell', args = { 'nu' } },
+      { label = 'Nushell', args = { 'nu', '-l' } },
       {
          label = 'Git Bash',
          args = { 'C:\\Users\\Shadow\\scoop\\apps\\git\\current\\bin\\bash.exe' },
