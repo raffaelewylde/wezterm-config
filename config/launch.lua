@@ -22,7 +22,6 @@ elseif platform.is_mac then
    options.launch_menu = {
       { label = 'Bash', args = { '/usr/local/bin/bash', '-l' } },
       { label = 'Fish', args = { '/usr/local/bin/fish', '-l' } },
-      { label = 'Nushell', args = { '/usr/local/bin/nu', '-l' } },
       { label = 'Zsh', args = { '/usr/local/bin/zsh', '-l' } },
       { label = 'NuShell', args = { '/usr/local/bin/nu', '-l' } },
       { label = 'Murex', args = { '/usr/local/bin/murex' } },
