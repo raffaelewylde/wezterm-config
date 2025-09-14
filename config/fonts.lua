@@ -1,17 +1,20 @@
 local wezterm = require('wezterm')
 local platform = require('utils.platform')
+local conf = require('config')
 local font_family
 local font_size
+
+conf.font_dirs = { 'config/fonts' }
 -- local font = 'Maple Mono SC NF'
-if platform.is_mac or platform.in_linux then
-   font_family = 'JetBrainsMono Nerd Font'
-   font_size = 12
-elseif platform.is_win then
-   font_family = "CaskaydiaCove Nerd Font"
+if platform.is_mac or platform.is_linux then
+   font_family = 'MesloLGS Nerd Font'
    font_size = 14
--- elseif platform.is_linux then
---   font_family = 'JetBrainsMono Nerd Font'
---   font_size = 12
+elseif platform.is_win then
+   font_family = 'CaskaydiaCove Nerd Font'
+   font_size = 14
+   -- elseif platform.is_linux then
+   --   font_family = 'JetBrainsMono Nerd Font'
+   --   font_size = 12
 end
 return {
    font = wezterm.font({
