@@ -43,7 +43,7 @@ elseif platform.is_linux then
       { label = 'Elvish', args = { 'elvish' } },
       {
          label = 'Xonsh',
-         args = { '/home/wylde/.local/share/mise/installs/pipx-xonsh/latest/bin/xonsh', '-l' },
+         args = { '/home/wylde/.local/xonsh-env/xbin/xonsh', '-l' },
       },
    }
 end
